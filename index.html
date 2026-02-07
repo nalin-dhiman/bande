@@ -46,7 +46,7 @@
         </div>
         <div class="gate-content" style="z-index: 10; padding: 20px 40px;">
             <h1 class="garden-title" style="font-size: 3rem; margin-bottom: 5px;">Catch the Magic</h1>
-            <p class="gate-hint" style="margin-bottom: 15px;">Pop the bubbles: 1 - 9 - 5 - 7</p>
+            <p class="gate-hint" style="margin-bottom: 15px;"></p>
             <div class="gate-indicators">
                 <span></span><span></span><span></span><span></span>
             </div>
@@ -106,20 +106,32 @@
         </div>
     </section>
 
-    <!-- FINALE -->
     <section id="finale" class="level hidden">
-        <div class="finale-overlay">
-            <h1 class="garden-title" style="color:#fff;">Happy Birthday, Bandna!</h1>
-            <p style="font-size:1.2rem; margin-bottom:20px; color:#fff;">Orchestrating the stars for you ✨</p>
-            <button id="hug-btn" class="hud-btn magnet"
-                style="font-size:1.5rem; padding:15px 40px; background:#FF69B4; color:white; border:none;">Send Love
-                💖</button>
-        </div>
-        <div class="masonry-wall" id="wall">
-            <!-- Auto Scroll Images -->
-        </div>
-    </section>
+        <div class="finale-overlay" style="max-width: 90%; width: 600px; padding: 30px; background: rgba(0,0,0,0.4);">
+            <h1 class="garden-title" style="color:#fff; font-size: 3.5rem; margin-bottom: 10px;">Happy Birthday, Bandana!</h1>
+            
+            <p style="font-size:1.1rem; margin-bottom:20px; color:#fff; opacity: 0.9;">Orchestrating the stars for you ✨</p>
 
+            <div class="poem-block" style="margin-bottom: 30px; color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.5);">
+                <p style="font-family: var(--font-sub); font-size: 1.6rem; margin: 5px 0; line-height: 1.4;">
+                    "There is a garden growing inside you,<br>
+                    Wilder than the Shirui in bloom.<br>
+                    You carry the mist of the hills,<br>
+                    And the dance of the lake in your soul."
+                </p>
+                <p style="font-family: var(--font-sub); font-size: 1.6rem; margin-top: 15px; font-weight: bold; color: #FFC0CB;">
+                    You are life, unscripted and free.
+                </p>
+            </div>
+            <button id="hug-btn" class="hud-btn magnet"
+                style="font-size:1.3rem; padding:15px 40px; background:#FF69B4; color:white; border:2px solid white; box-shadow: 0 0 20px rgba(255, 105, 180, 0.6); border-radius: 50px;">
+                Sending lots of love, Enjoy the life! 💖
+            </button>
+        </div>
+
+        <div class="masonry-wall" id="wall">
+            </div>
+    </section>
     <!-- Lightbox -->
     <div id="lightbox" class="hidden"
         style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; display:flex; justify-content:center; align-items:center; flex-direction:column; backdrop-filter:blur(20px);">
