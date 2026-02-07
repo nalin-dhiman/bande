@@ -1,5 +1,87 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    /* ========================================
+       BIRTHDAY COUNTDOWN TIMER LOCK
+       ======================================== */
+    const TARGET_DATE = new Date('2026-02-10T00:00:00+05:30'); // Feb 10, 2026 12:00 AM IST
+    const lockScreen = document.getElementById('countdown-lock');
+
+    function updateCountdown() {
+        const now = new Date();
+        const difference = TARGET_DATE - now;
+
+        if (difference <= 0) {
+            // Unlock the site
+            unlockSite();
+            return;
+        }
+
+        // Calculate time units
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        // Update display with flip animation
+        updateDigit('days', days);
+        updateDigit('hours', hours);
+        updateDigit('minutes', minutes);
+        updateDigit('seconds', seconds);
+    }
+
+    function updateDigit(id, value) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const newValue = String(value).padStart(2, '0');
+        if (el.textContent !== newValue) {
+            el.classList.add('flip');
+            setTimeout(() => {
+                el.textContent = newValue;
+                el.classList.remove('flip');
+            }, 300);
+        }
+    }
+
+    function unlockSite() {
+        if (!lockScreen) return;
+        lockScreen.classList.add('unlock-animation');
+        setTimeout(() => {
+            lockScreen.style.display = 'none';
+        }, 2000);
+        clearInterval(countdownInterval);
+    }
+
+    // Create floating hearts
+    function createHeart() {
+        const heartsContainer = document.getElementById('hearts-container');
+        if (!heartsContainer) return;
+
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.textContent = ['💕', '💖', '🌸', '🌺', '💝'][Math.floor(Math.random() * 5)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDuration = (5 + Math.random() * 3) + 's';
+        heart.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+
+        heartsContainer.appendChild(heart);
+
+        // Remove after animation
+        setTimeout(() => heart.remove(), 8000);
+    }
+
+    // Initialize countdown
+    if (lockScreen) {
+        updateCountdown();
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        // Create hearts periodically
+        setInterval(createHeart, 800);
+    }
+
+    /* ========================================
+       END COUNTDOWN TIMER LOGIC
+       ======================================== */
+
     /* --- GAME STATE --- */
     const state = {
         level: 0, // Start at Gate
