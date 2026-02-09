@@ -47,6 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
         lockScreen.classList.add('unlock-animation');
         setTimeout(() => {
             lockScreen.style.display = 'none';
+            // Initialize the game after unlock
+            initBubbles();
+            goToLevel(0);
         }, 2000);
         clearInterval(countdownInterval);
     }
@@ -371,8 +374,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Init L0
-    initBubbles();
+    // Init L0 only if countdown has already passed
+    const now = new Date();
+    const countdownPassed = (TARGET_DATE - now) <= 0;
+    if (!lockScreen || countdownPassed) {
+        initBubbles();
+    }
 
     /* --- PHYSICS: MOUSE & WIND --- */
     let mouse = { x: 0, y: 0, vx: 0, vy: 0 };
