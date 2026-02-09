@@ -72,9 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Initialize countdown
+    let countdownInterval;
     if (lockScreen) {
         updateCountdown();
-        const countdownInterval = setInterval(updateCountdown, 1000);
+        countdownInterval = setInterval(updateCountdown, 1000);
 
         // Create hearts periodically
         setInterval(createHeart, 800);
