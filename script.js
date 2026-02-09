@@ -47,9 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
         lockScreen.classList.add('unlock-animation');
         setTimeout(() => {
             lockScreen.style.display = 'none';
-            // Initialize the game after unlock
+            // Initialize the game after unlock - level 0 is already active
             initBubbles();
-            goToLevel(0);
         }, 2000);
         clearInterval(countdownInterval);
     }
